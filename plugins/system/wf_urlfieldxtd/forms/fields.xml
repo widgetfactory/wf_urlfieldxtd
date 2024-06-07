@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="fieldparams">
+        <fieldset name="fieldparams">
+            <field name="target" type="list" default="" label="PLG_SYSTEM_WF_URLFIELDXTD_PARAMS_TARGET_LABEL" description="PLG_SYSTEM_WF_URLFIELDXTD_PARAMS_TARGET_DESC">
+                <option value=""></option>
+                <option value="_blank">PLG_SYSTEM_WF_URLFIELDXTD_PARAMS_TARGET_BLANK</option>
+                <option value="_self">PLG_SYSTEM_WF_URLFIELDXTD_PARAMS_TARGET_SELF</option>
+                <option value="_parent">PLG_SYSTEM_WF_URLFIELDXTD_PARAMS_TARGET_PARENT</option>
+                <option value="_top">PLG_SYSTEM_WF_URLFIELDXTD_PARAMS_TARGET_TOP</option>
+            </field>
+
+            <field name="class" type="text" label="PLG_SYSTEM_WF_URLFIELDXTD_PARAMS_CLASS_LABEL" description="PLG_SYSTEM_WF_URLFIELDXTD_PARAMS_CLASS_DESC" />
+        </fieldset>
+    </fields>
+</form>

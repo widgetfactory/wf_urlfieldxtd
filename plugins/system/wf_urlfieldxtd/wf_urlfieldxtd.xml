@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="plugin" group="system" method="upgrade">
+  <name>plg_system_wf_urlfieldxtd</name>
+  <version>@@version@@</version>
+  <creationDate>@@date@@</creationDate>
+  <author>Ryan Demmer</author>
+  <authorEmail>@@email@@</authorEmail>
+  <authorUrl>https://www.joomlacontenteditor.net</authorUrl>
+  <copyright>@@copyright@@</copyright>
+  <license>@@licence@@</license>
+  <description>PLG_SYSTEM_WF_URLFIELDXTD_XML_DESCRIPTION</description>
+
+  <namespace path="src">Joomla\Plugin\System\WfUrlFieldXtd</namespace>
+  
+  <files folder="plugins/system/wf_urlfieldxtd">
+    <folder>forms</folder>
+    <folder>language</folder>
+    <folder>services</folder>
+    <folder>src</folder>
+  </files>
+
+  <config>
+    <inlinehelp button="show"/>
+
+    <fields name="params">
+      <fieldset name="options">
+      </fieldset>
+    </fields>
+
+  </config>
+</extension>
