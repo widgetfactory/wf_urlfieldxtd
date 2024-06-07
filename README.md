@@ -2,7 +2,7 @@
 Extends the Joomla URL Field with additional parameter options
 
 ## Download
-Click [here to download]([https://github.com/widgetfactory/wf_urlfieldxtd/releases](https://github.com/widgetfactory/wf_urlfieldxtd/releases)) the latest release.
+Click [here to download](https://github.com/widgetfactory/wf_urlfieldxtd/releases) the latest release.
 
 ## Requirements
 Joomla 4.4.x, 5.x
