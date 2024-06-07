@@ -14,6 +14,7 @@ use Joomla\CMS\Factory;
 use Joomla\CMS\Plugin\CMSPlugin;
 use Joomla\Registry\Registry;
 use Joomla\CMS\Form\Form;
+use Joomla\CMS\Fields\FieldsHelper;
 
 // phpcs:disable PSR1.Files.SideEffects
 \defined('_JEXEC') or die;
@@ -47,10 +48,13 @@ final class UrlFieldXtd extends CMSPlugin
             return true;
         }
 
-        // Update MediaField parameters
+        // Update field parameters
         if (strpos($form->getName(), 'com_fields.field') === 0) {            
+            // Get the field data as a Registry object.
+            $tmpData = new Registry($data);
 
-            if (is_array($data) && isset($data['type']) && $data['type'] == 'url') {
+            // Check if the field type is url
+            if ($tmpData->get('type', '') == 'url') {
                 $fields = JPATH_PLUGINS . '/system/wf_urlfieldxtd/forms/fields.xml';
 
                 if (is_file($fields)) {
