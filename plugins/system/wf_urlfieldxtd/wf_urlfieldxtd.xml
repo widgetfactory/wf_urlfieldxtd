@@ -13,7 +13,7 @@
   <namespace path="src">Joomla\Plugin\System\WfUrlFieldXtd</namespace>
   
   <files folder="plugins/system/wf_urlfieldxtd">
-    <folder>forms</folder>
+    <folder plugin="wf_urlfieldxtd">forms</folder>
     <folder>language</folder>
     <folder>services</folder>
     <folder>src</folder>
