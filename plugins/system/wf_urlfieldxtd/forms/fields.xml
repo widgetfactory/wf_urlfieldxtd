@@ -2,6 +2,8 @@
 <form>
     <fields name="fieldparams">
         <fieldset name="fieldparams">
+            <field name="text" type="text" label="PLG_SYSTEM_WF_URLFIELDXTD_PARAMS_TEXT_LABEL" description="PLG_SYSTEM_WF_URLFIELDXTD_PARAMS_TEXT_DESC" />
+
             <field name="target" type="list" default="" label="PLG_SYSTEM_WF_URLFIELDXTD_PARAMS_TARGET_LABEL" description="PLG_SYSTEM_WF_URLFIELDXTD_PARAMS_TARGET_DESC">
                 <option value=""></option>
                 <option value="_blank">PLG_SYSTEM_WF_URLFIELDXTD_PARAMS_TARGET_BLANK</option>
