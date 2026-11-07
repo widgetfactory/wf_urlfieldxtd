@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     Joomla.Plugin
- * @subpackage  System.WfCustomPathVariables
+ * @subpackage  System.WfUrlFieldXtd
  *
  * @copyright   Copyright (C) 2005 - 2023 Open Source Matters, Inc. All rights reserved.
  * @copyright   Copyright (c) 2009-2023 Ryan Demmer. All rights reserved

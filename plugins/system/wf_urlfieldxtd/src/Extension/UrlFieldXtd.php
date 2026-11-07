@@ -10,11 +10,10 @@
 
 namespace Joomla\Plugin\System\WfUrlFieldXtd\Extension;
 
-use Joomla\CMS\Factory;
+use Joomla\CMS\Event\Model\PrepareFormEvent;
 use Joomla\CMS\Plugin\CMSPlugin;
+use Joomla\Event\SubscriberInterface;
 use Joomla\Registry\Registry;
-use Joomla\CMS\Form\Form;
-use Joomla\CMS\Fields\FieldsHelper;
 
 // phpcs:disable PSR1.Files.SideEffects
 \defined('_JEXEC') or die;
@@ -24,7 +23,7 @@ use Joomla\CMS\Fields\FieldsHelper;
  * UrlFieldXtd plugin
  *
  */
-final class UrlFieldXtd extends CMSPlugin
+final class UrlFieldXtd extends CMSPlugin implements SubscriberInterface
 {
     /**
      * Affects constructor behavior. If true, language files will be loaded automatically.
@@ -32,37 +31,61 @@ final class UrlFieldXtd extends CMSPlugin
      * @var    boolean
      */
     protected $autoloadLanguage = true;
-    
-    public function onContentPrepareForm(Form $form, $data = [])
+
+    /**
+     * Returns an array of events this subscriber will listen to.
+     *
+     * @return  array
+     */
+    public static function getSubscribedEvents(): array
+    {
+        return [
+            'onContentPrepareForm' => 'onContentPrepareForm',
+        ];
+    }
+
+    /**
+     * Add the extra parameters to the URL field type form.
+     *
+     * @param   PrepareFormEvent  $event  The event object
+     *
+     * @return  void
+     */
+    public function onContentPrepareForm(PrepareFormEvent $event): void
     {
         $app = $this->getApplication();
 
         if (!$app->isClient('administrator')) {
-            return true;
+            return;
         }
-
-        $docType = $app->getDocument()->getType();
 
         // must be an html doctype
-        if ($docType !== 'html') {
-            return true;
+        if ($app->getDocument()->getType() !== 'html') {
+            return;
         }
 
-        // Update field parameters
-        if (strpos($form->getName(), 'com_fields.field') === 0) {            
-            // Get the field data as a Registry object.
-            $tmpData = new Registry($data);
+        $form = $event->getForm();
 
-            // Check if the field type is url
-            if ($tmpData->get('type', '') == 'url') {
-                $fields = JPATH_PLUGINS . '/system/wf_urlfieldxtd/forms/fields.xml';
+        if (strpos($form->getName(), 'com_fields.field') !== 0) {
+            return;
+        }
 
-                if (is_file($fields)) {
-                    if ($fields_xml = simplexml_load_file($fields)) {
-                        $form->setField($fields_xml);
-                    }
-                }
-            }
+        $data = new Registry($event->getData());
+
+        if ($data->get('type', '') !== 'url') {
+            return;
+        }
+
+        $fields = JPATH_PLUGINS . '/system/wf_urlfieldxtd/forms/fields.xml';
+
+        if (!is_file($fields)) {
+            return;
+        }
+
+        $xml = simplexml_load_file($fields);
+
+        if ($xml) {
+            $form->setField($xml);
         }
     }
 }
